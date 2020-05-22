@@ -1,0 +1,51 @@
+# depslib dependency file v1.0
+1574672738 source:c:\users\alhuw\desktop\senior project\parallelga\src\genetic.cpp
+	"genetic.h"
+	<stdio.h>
+	<cmath>
+	<iostream>
+	<stdlib.h>
+	<algorithm>
+	<time.h>
+	<typeinfo>
+	<omp.h>
+
+1571213356 c:\users\alhuw\desktop\senior project\parallelga\include\genetic.h
+	<vector>
+	<stdio.h>
+
+1574672993 source:c:\users\alhuw\desktop\senior project\parallelga\main.cpp
+	<iostream>
+	<cmath>
+	<vector>
+	<stdlib.h>
+	<algorithm>
+	<genetic.h>
+	<time.h>
+	<omp.h>
+
+1584546413 source:c:\users\alhuw\desktop\senior\senior project\parallelga\src\genetic.cpp
+	"genetic.h"
+	<stdio.h>
+	<cmath>
+	<iostream>
+	<stdlib.h>
+	<algorithm>
+	<time.h>
+	<typeinfo>
+	<omp.h>
+
+1571213356 c:\users\alhuw\desktop\senior\senior project\parallelga\include\genetic.h
+	<vector>
+	<stdio.h>
+
+1585779863 source:c:\users\alhuw\desktop\senior\senior project\parallelga\main.cpp
+	<iostream>
+	<cmath>
+	<vector>
+	<stdlib.h>
+	<algorithm>
+	<genetic.h>
+	<time.h>
+	<omp.h>
+
