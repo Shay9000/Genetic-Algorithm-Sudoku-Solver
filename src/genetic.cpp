@@ -49,11 +49,7 @@ int offset=0,counter=0,a=0;//starting with offset 0 and counter 0
 int rowFit=0;
 int colFit=0;
 
-/***int sumRow=0;
-int sumCol=0;
-int mulRow=1;
-int mulCol=1;
-***/
+
 for (int i = 0; i < n; i++)
 {
 
@@ -68,19 +64,12 @@ int colRep[n]={0};
                 colFit++;
             rowRep[matrixRepresentation[i][j]-1]+=1;
             colRep[matrixRepresentation[j][i]-1]+=1;
-/***
-sumCol+=matrixRepresentation[j][i];
-sumRow+=matrixRepresentation[i][j];
-mulCol*=matrixRepresentation[j][i];
-mulRow*=matrixRepresentation[i][j];
-***/
     }
 
 }
 
 this->fitness = rowFit+colFit;
 
-//this->fitness = (10*(sumCol+sumRow))+(int)(sqrt(362880-mulCol))+(int)(sqrt(362880-mulRow))+(50*((9-rowFit)+(9-colFit)));
 }
 
 /** @brief (one liner)
@@ -132,7 +121,6 @@ bool Chromosome::operator < (const Chromosome b) {
 int n =sqrt(this->representation.size());//square root of the full array which is n*n = n
 
 fitness=0;
-//int n =sqrt(representation.size());
 
  int randFiller;
  #pragma omp parallel for
@@ -237,22 +225,9 @@ cout << "Fitness = "<< chromo.fitness;
   */
 Chromosome Population::getFittest()
 {
-/*    vector <Chromosome> tempGenePool;
-    tempGenePool.assign(genePool.begin(),genePool.end());
-sort(tempGenePool.begin(),tempGenePool.end());
-cout<<"\n\n this is sorted \n\n";
-
-
-for(int i =0 ; i< sizeof(tempGenePool)/sizeof(int);i++)
-    {
-  printSolution(tempGenePool.at(0));
-  cout<<"\n fitness"<<tempGenePool.at(i).fitness;
-  cout<<"\n++++====+++\n";}
-  */
   Chromosome a=genePool.at(0) ;
   int z=0;
   for(int i =1 ; i< populationSize;i++){
- //     cout<<"\n\n a fitness:" << a.fitness<<"\ngenePool(i) fitness:"<<genePool.at(i).fitness<<"\n";
     if (genePool.at(i).fitness<a.fitness)
         z=i;
   }
@@ -279,7 +254,6 @@ int element2=rand()%blockSize;
 
 while (true){
     block= rand()%(blockSize);
-//cout <<"A";
 
     for(int i =0; i< blockSize;i++){
         blockArray[i]=array[(block*blockSize)+i];
@@ -287,7 +261,6 @@ while (true){
 
     int counter = blockSize*blockSize;
 while((helpArray.at((block*blockSize)+element1)!=0 || helpArray.at((block*blockSize)+element2)!=0 )){
-   // cout <<"b";
     if(helpArray.at((block*blockSize)+element1)!=0)
     element1=rand()%blockSize;
     if(helpArray.at((block*blockSize)+element2)!=0)
@@ -296,7 +269,6 @@ counter--;
 if (counter == 0) break;
 }//what if its a full block and no zeros exist """FIX LOOP """
 if(helpArray.at((block*blockSize)+element1)==0 && helpArray.at((block*blockSize)+element2)==0 ){
-//cout <<block << " " <<element1 << " " << element2<<endl;
 break;
 
 }
@@ -334,8 +306,6 @@ void Population::selectAndRecombine(int mutationRate,int elitisim){
     }
 
     double ratio = (double)totalFitness/(double)(RAND_MAX/2);
-    //ratio/=100;
-//cout <<"\n\n"<<(RAND_MAX/2)<<"\n\n";
 
     int cFitness= 0;
     int prFitness = 0;
@@ -344,14 +314,6 @@ void Population::selectAndRecombine(int mutationRate,int elitisim){
 
             prFitness = cFitness;
             cFitness +=(genePool.at(i)).fitness;
-/*
-cout<<"\n     prFitness : "<<     prFitness ;//previous fitness
-cout<<"\n     cFitness : "<<     cFitness ;//current fitness
-cout<<"\n     ratio : "<<     ratio;
-
-cout<<"\n     j: "<<     (double)prFitness/ratio;
-cout<<"\n     to: "<<     (double)cFitness/ratio;
-*/
           for(double j=(double)prFitness/ratio;j<(double)cFitness/ratio;j++)
             {
 
@@ -359,26 +321,16 @@ cout<<"\n     to: "<<     (double)cFitness/ratio;
 
 
             }
- //cout <<"\ni=" << i <<"\n";
-      //  int from = prFitness/ratio;
-        //int to = cFitness/ratio;
-       // int eleos = 5;
-
     }
     int rouletteSize = rouletteWheel.size();
-   // tempGenePool.assign(genePool.begin(),genePool.end());
-    //sort(tempGenePool.begin(),tempGenePool.end());
     for (int i=0; i<genePool.size(); i++)
         tempGenePool.push_back(genePool[i]);
         sort(tempGenePool.begin(),tempGenePool.end());
 for(int t=0;t<elitisim;t++){
 newGenePool.push_back(tempGenePool[t]);
 }
-//printf("\n\nhello\n\n");
     for( int i = elitisim; i < (int)genePool.size()-1; i +=2)//let's create a new population, the +=2 is since from 2 parents we get 2 children , so each run creates 2 new chromosomes
     {
-//printf("%d\n",i);
-        //random number from 0 to roulettesize-1
 int index =rouletteWheel.at( int((rouletteSize*rand())/(RAND_MAX + 1)) )  ;
         Parent1 = &genePool.at(index);
 
@@ -437,9 +389,6 @@ if(m<=mutationRate){
 
 mutation(Child1,helpArray,n);
 
-//cout << "\n\n///////////////////////mutation child 1///////////////////////\n\n";
-//cout << "--mutation child 1--\n";
-
 }
 newGenePool.push_back(Chromosome(Child1,sizeof(Child1)));
 
@@ -449,46 +398,14 @@ m=rand()%101;
  /**Mutation(Child2)**/
 if(m<=mutationRate){
 mutation(Child1,helpArray,n);
-//cout << "--mutation child 2--\n";
-
-//cout << "\n\n///////////////////////mutation child 2///////////////////////\n\n";
 }
 newGenePool.push_back(Chromosome(Child2,sizeof(Child2)));
-//    cout <<"\nC1\n";
-//printSolution(newGenePool.at(i));
-  //  cout <<"\nC2\n";
-//printSolution(newGenePool.at(i+1));
 }
 
 genePool.clear();
 genePool=newGenePool;
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-chromo A   Fitness 5
-
-chromo B   Fitness 10
-
-
-     Total Fitness 15
-
-Probability of A = -5/15 + 1= -1/3 +1 = 2/3
-Probability of B = -10/15 + 1= -2/3 +1 = 1/3
-
-total probability = 1 (This is by def is necessary)
-**/
 
 
 
@@ -508,7 +425,6 @@ this->helpArray.at(i)=(hA[i]);
 cout<< "pop const";
     for(int k = 0; k < populationSize; k ++)
     {
-      //  cout <<"chromo : "<< k<<endl;
         Chromosome a = Chromosome(hA,size);
         genePool.push_back(a); //populating the gene pool
     }
@@ -529,4 +445,3 @@ Genetic::~Genetic()
 {
     //dtor
 }
-

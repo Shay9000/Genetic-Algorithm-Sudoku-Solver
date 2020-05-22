@@ -13,24 +13,10 @@ int main()
 {
     {
 
-
-//int mmm[] = {1,2,4,3 ,3,4,1,2, 2,1,3, 4, 4, 1, 2,3};
-//printf("h");
-  //  Chromosome test = Chromosome(mmm,sizeof(mmm));
-
-//printf("h");
-
-   // test.evaluate();
-   // printf("fitness = %d",test.fitness);
     }
      FILE *fp;
      FILE *lp;
 {
-
-//   fp = fopen("Results with reset popSize(4200) maxGeneration(2000) 11/19/2019.txt", "w+");
-
-//     fp = fopen("Results_with_reset_popSize(120)maxGeneration(1000)3_2_2020_Solving_3x3_runtest_collection_AA_.txt", "w+");
-   //  fp = fopen("Results_with_reset_generating_new_sudoku_4x4_empty_array_3_18_2020.txt", "w+");
 }
 fp = fopen("Final_Test_Solving_4x4_with_reset_popSize(2000)maxGeneration(100).txt", "w+");
 lp = fopen("Final Test.RRtxt", "a+");
@@ -38,34 +24,7 @@ lp = fopen("Final Test.RRtxt", "a+");
   srand(time(0));
     time_t start, end;
         time(&start);
-//int myints[] = {3,0,0, 0,6,5 ,0,0,0 ,9,0,0 ,7,0,0 ,0,3,0, 0,8,0 ,0,3,0 ,7,0,0 ,8,7,6 ,3,0,2 ,0,9,0, 0,6,2 ,5,7,3 ,0,0,2 ,0,3,0 ,4,9,6 ,1,0,0, 9,0,0, 1,0,0 4,0,0, 4,0,0, 0,9,0 ,0,1,0 ,0,0,5 ,2,0,0 ,0,8};
-
-//int myints[] ={0,6,0,4,1,5,0,0,8,0,8,0,0,6,0,4,0,0,4,2,0,3,7,8,5,6,0,1,5,0,3,0,6,0,8,0,6,0,4,0,1,0,3,5,0,8,3,2,7,0,5,1,0,6,8,3,1,6,7,2,5,0,9,9,4,6,1,3,0,0,2,0,2,0,0,9,0,0,6,1,3};
-
-//int myints[] = {0,0,6,0,0,0,0,7,0,0,8,9,0,7,0,6,0,0,4,0,7,0,6,0,0,2,0,4,0,8,7,0,0,0,9,0,0,0,5,0,0,0,7,0,0,0,9,0,0,0,1,6,0,2,0,8,0,0,4,0,3,0,2,0,0,2,0,1,0,4,5,0,0,5,0,0,0,0,9,0,0};
 int myints[] = {1,0,4,0 ,3,4,0,2, 2,1,0, 4, 4, 0, 2, 0};
-/*
-1 0 3 4
-4 0 0 2
-2 1 4 0
-0 4 2 0
-
-*/
-//int myints[] = {0,0,0,0 ,0,0,0,0, 0,0,0, 0, 0, 0, 0, 0};
-
-
-/*               0 1 2 3| 4 5 6 7| 8 9 10 11| 12 13 14 15
-1 2 3 4
-4 3 1 2
-2 1 4 3
-3 4 2 0
-*/
-{
-
-
-//int myints[] = {0,0,0, 0,0,0 ,0,0,0, 0,0,0, 0,0,0 ,0,0,0, 0,0,0, 0,0,0 ,0,0,0, 0,0,0, 0,0,0 ,0,0,0, 0,0,0, 0,0,0 ,0,0,0, 0,0,0, 0,0,0 ,0,0,0, 0,0,0, 0,0,0 ,0,0,0, 0,0,0, 0,0,0 ,0,0,0, 0,0,0, 0,0,0 ,0,0,0, 0,0,0, 0,0,0 ,0,0,0 };
-//int myints[] = {0,4,0,0,7,9,0,5,8,0,3,8,0,1,0,0,0,0,0,0,7,0,0,8,0,2,0,0,6,4,0,0,7,2,0,0,0,0,5,3,0,4,7,0,0,0,0,3,8,0,0,5,6,0,0,2,0,7,0,0,4,0,0,0,0,0,0,5,0,1,9,0,7,3,0,6,4,0,0,8,5};
-}
 int popSize=2000;
  Population a = Population(popSize,myints,sizeof(myints));//Generation 0 initialization
 cout <<sizeof(myints)<<endl;
@@ -73,16 +32,6 @@ cout <<sizeof(myints)<<endl;
 
         fprintf(fp,"%d",generationNum);
         fprintf(fp,"\n");
-{/*
-            for(int i =0; i<popSize;i++ ){
-   cout<<"Fitness of chromo "<< i <<": "<<a.genePool.at(i).fitness<<endl;//Just printing the fitness of each individual
-fprintf(fp, "Fitness of chromo " );
-fprintf(fp,"%d",i);
-fprintf(fp,": " );
-fprintf(fp,"%d",a.genePool.at(i).fitness);
-fprintf(fp,"\n");
-    }
-  */}
 cout <<"Generation number = " <<generationNum<<"\tFittest fitness is = "<<a.getFittest().fitness<<endl;
 int stuck =0;//this will be incremented when ever the fitness of the best chromosome is not changing
 int maxGenerations=100;//if we reach max generations 50 generations and we are stuck then we must restart the GA5
@@ -90,18 +39,8 @@ while(a.getFittest().fitness!=0){
 int temp =a.getFittest().fitness;//temp var that stores the current fittest chromosome
 
 
-//20
 a.selectAndRecombine(50,2); //Start Genetic algorithm on this generation
-  {/* #pragma omp prallel for
-    for(int i =0; i<popSize;i++ ){
-   cout<<"Fitness of chromo "<< i <<": "<<a.genePool.at(i).fitness<<endl;//Just printing the fitness of each individual
-fprintf(fp, "Fitness of chromo " );
-fprintf(fp,"%d",i);
-fprintf(fp,": " );
-fprintf(fp,"%d",a.genePool.at(i).fitness);
-fprintf(fp,"\n");
-    }
-*/}
+
 cout <<"Generation number = " <<generationNum<<"\tFittest fitness is = "<<a.getFittest().fitness<<endl;
         fprintf(fp, "\nGENERATION NUMBER:");
         fprintf(fp,"%d",generationNum);
@@ -126,7 +65,6 @@ fprintf(fp, "\n\nStuck at local minima ... restarting GA\n\n:");
 }
 a.printSolution(a.getFittest());//When you leave the while loop print the solution
 
-//fprintf(fp,a.printSolution(a.getFittest()));
 
 
  int n =sqrt(a.getFittest().representation.size());//square root of the full array which is n*n = n
@@ -177,4 +115,3 @@ a.printSolution(a.getFittest());//When you leave the while loop print the soluti
    fclose(fp);
  return 0;
 }
-
